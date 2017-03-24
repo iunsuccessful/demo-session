@@ -1,2 +1,5 @@
 spring-session/build/
 *.iml
+.gradle/
+build/
+.idea/
