@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+    <!--要实现自己的，实现一个 sessionRepository 就行了 -->
+    <!--<bean id="sessionRepository" class="org.springframework.session.MapSessionRepository">-->
+    <!--</bean>-->
+
+    <!--自己实现的 Repository 与上面任选一个-->
+    <bean id="sessionRepository" class="iunsuccessful.demo.spring.session.dal.impl.GuavaSessionRepository">
+    </bean>
+
+    <!-- Option(可选) 设置 Cookie 相关信息 -->
+    <bean id="cookieSerializer" class="org.springframework.session.web.http.DefaultCookieSerializer">
+        <property name="cookieName" value="spring-session-id"/>
+    </bean>
+
+    <!-- Option(可选) 设置 Session 相关信息 -->
+    <bean id="sessionStrategy" class="org.springframework.session.web.http.CookieHttpSessionStrategy">
+        <property name="cookieSerializer" ref="cookieSerializer"/>
+    </bean>
+
+    <bean class="org.springframework.session.config.annotation.web.http.SpringHttpSessionConfiguration">
+        <property name="httpSessionStrategy" ref="sessionStrategy"/>
+    </bean>
+
+</beans>

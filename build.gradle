@@ -1,0 +1,25 @@
+configure(allprojects) { project ->
+
+    apply plugin: 'java'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    group 'iunsuccessful.demo'
+
+    version '1.0-SNAPSHOT'
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    configure([compileJava, javadoc, compileTestJava]) {
+        options.encoding = "UTF-8"
+    }
+
+    ext.guavaVersion = "19.0"
+    ext.springVersion = "4.3.2.RELEASE"
+    ext.jacksonVersion = "2.8.1"
+
+}

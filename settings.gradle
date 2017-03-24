@@ -1,0 +1,5 @@
+rootProject.name = 'demo-session'
+
+include 'shiro-session'
+include 'spring-session'
+
